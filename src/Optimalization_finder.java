@@ -1,5 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 public class Optimalization_finder {
     funkcja_ograniczenia[] warunki;
@@ -79,10 +81,14 @@ public class Optimalization_finder {
         cel=new funkcja(zmienne);
     }
 
+
     private static double[] find_max(double[][] punkty, Optimalization_finder problem, double[] x0) {
         boolean r;
         double[] max=null;
         r=true;
+        //tu trzeba wątki zastartować, a tab wyników później sprawdzić
+//        results=new ArrayBlockingQueue<Boolean>(problem.warunki.length);
+
         for(funkcja_ograniczenia fun:problem.warunki){
             if(!fun.sprawdz(x0)){
                 r=false;
